@@ -4,7 +4,7 @@ tags: tech, svelte, javascript, framework
 description: Why I use Svelte 3 and what's so great about it
 ---
 
-I started my journey with vanilla JS for around 2 months, it was easy, clean, and fast. But, as it becomes bigger and more complex, I keep repeating myself and ended up creating some helper functions and modules for me to reuse. Little did I know, I was creating my own UI framework / library that I didn't know already existed, that's when I learned about npm and React.
+I started my journey with vanilla JS for around 2 months, it was easy, clean, and fast. But, as it becomes bigger and more complex, I keep repeating myself and ended up creating some helper functions and modules for me to reuse. Little did I know, I was creating my own UI framework / library. Although, not everything was in vain, I learned a lot about npm, how modules work and how I can use or even create my own packages and publish it. Some time later, I joined a team to work on a website, and that's when I learned about React.
 
 I've immersed myself and tried React for almost a year, but for some reason I was dissatisfied and couldn't imagine working with it anymore. By the end of 2018 till early 2019, I found out about Vue and immediately fell in love with it. It feels like it has everything I dreamt of, with its template syntax, writing HTML, JS, and CSS in one file and being able to reuse that file (component) multiple times. It feels so good because that's what I thought web components should be.
 
