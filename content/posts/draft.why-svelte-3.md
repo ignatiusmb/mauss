@@ -4,29 +4,61 @@ tags: tech, svelte, javascript, framework
 description: Why I use Svelte 3 and what's so great about it
 ---
 
-I started my journey with vanilla JS for around 2 months, it was easy, clean, and fast. But, as it becomes bigger and more complex, I keep repeating myself and ended up creating some helper functions and modules for me to reuse. Little did I know, I was creating my own UI framework / library. Although, not everything was in vain, I learned a lot about npm, how modules work and how I can use or even create my own packages and publish it. Some time later, I joined a team to work on a website, and that's when I learned about React.
+Web development, in the front-end especially, is a chaotic mess that I might've avoid if I knew it from the beginning. Even after several years, I would probably still advice those whose going to dive into the front-end rabbit hole to stop and turn back right now... that is if it weren't for Svelte.
 
-I've immersed myself and tried React for almost a year, but for some reason I was dissatisfied and couldn't imagine working with it anymore. By the end of 2018 till early 2019, I found out about Vue and immediately fell in love with it. It feels like it has everything I dreamt of, with its template syntax, writing HTML, JS, and CSS in one file and being able to reuse that file (component) multiple times. It feels so good because that's what I thought web components should be.
+JavaScript is easy, HTML and CSS especially, why do they need to make it complicated and over-engineer everything to the point it got too complex and become tedious to work on.
 
-But, alas, after a couple of months using it, I was still unsatisfied. It felt like I need to learn a lot more about Vue and how it handles stuff rather than develop and use my existing JS knowledge. Even though I said that it feels like everything I dreamt of, it's still incomplete and hasn't checked all of the list, and as I use it more and more, the unchecked list seems to get bigger and longer.
+> Should it really be *that* complicated?
 
-## Experience
+That's the question you should ask yourself before you dive into any new tools or technologies out there. You should really do your best to avoid tools that doesn't make the dev experience one of their top priorities.
+
+## How did I found out about Svelte
+
+I started my journey with just plain HTML, CSS, and vanilla JS for around 2 months. Yes, it was easy, clean, fast, and nice to work with. But, as it becomes bigger and more complex, I keep repeating myself and ended up creating some helper functions and modules for me to reuse. Little did I know, I was creating my own UI framework / library.
+
+Although, not everything was in vain, I learned a lot about npm, how modules work and how I can use or even create my own packages and publish it. But, it was still a lot of work just to get everything working correctly together, and I haven't even written the actual application.
+
+Some time later, I joined a team to work on a website, and that's when I learned about React I've immersed myself and tried React for almost a year, but I just couldn't continue working with it. It doesn't feel like JavaScript and everything seemed like a complicated mess of spaghetti code, even after all the efforts to organize it as components within folders. I was dissatisfied and couldn't imagine working with it anymore, it doesn't seem to align with how I manage and write my code.
+
+By the end of 2018 till early 2019, I found out about Vue and immediately fell in love with it. It feels like it has everything I dreamt of, with its template syntax, writing HTML, JS, and CSS in one file and being able to reuse that file (component) multiple times. It feels so good because that's what I thought web components should be.
+
+But, alas, after a couple of months using it, I was still unsatisfied. It felt like I need to learn a lot more about Vue and how it handles stuff rather than develop and use my existing JS knowledge. The usage of `this` keyword really over-complicates stuff that shouldn't have to be. Even though I said that it feels like everything I dreamt of, it's still incomplete and hasn't checked all of the list, and as I use it more and more, the unchecked list seems to get bigger and longer.
 
 That was mid-2019, around 2-3 months after Svelte 3 was released, I was just surfing through the web and stumbled upon [freeCodeCamp 2019 RealWorld Comparison](https://www.freecodecamp.org/news/a-realworld-comparison-of-front-end-frameworks-with-benchmarks-2019-update-4be0d3c78075/). At that moment, I immediately fell in love with Svelte. This was my first encounter with Svelte.
 
-![Transfer size comparison in KB](https://cdn-media-1.freecodecamp.org/images/DRmH8Fz15DLxXguz9d8NR0eVanX0U9xW9jom)
+## What is Svelte and the philosophy behind it
+
+Continuing from the previous section, [2019 RealWorld Comparison](https://www.freecodecamp.org/news/a-realworld-comparison-of-front-end-frameworks-with-benchmarks-2019-update-4be0d3c78075/) by freeCodeCamp really piqued my interest in all those frameworks, especially Svelte with its minimal transfer size and LOC written.
+
+We knew from our past trends that React or Vue are libraries that gets bundled with your application and served to your users, and Angular or Ember are frameworks that might or might not get bundled with your apps too.
+
+> [Svelte is a language.](https://gist.github.com/Rich-Harris/0f910048478c2a6505d1c32185b61934)
+
+It was first introduced as a UI framework and unlike others, it shifts work out of the client into the compiler, but it's still a framework nonetheless. Taken straight from the creator's words itself, **Svelte is actually a language**. It's an attempt to answer a question that many people have asked, and a few have answered: what would it look like if we had a language for describing reactive user interfaces?
+
+It's different because it was made by thinking inside the box. Designed specifically so that all those years of experience using HTML, CSS, and JS doesn't need to be discarded and instead you can build on top of those because it extended those languages.
+
+- It would extend HTML by adding JavaScript expressions in markup, directives for controlling behaviour and reacting to input, syntax for using conditions, loops and asynchronous values
+- It would extend CSS by adding a scoping mechanism that kept styles from clobbering each other
+- It would extend JavaScript by making reactivity a language primitive
+
+![Transfer size comparison in KB#f](https://cdn-media-1.freecodecamp.org/images/DRmH8Fz15DLxXguz9d8NR0eVanX0U9xW9jom "Transfer size in KB — fewer is better")
 
 I read through the docs and it just connects immediately, everything was so much simpler, and the best part is that we're just writing with the knowledge we already knew, just HTML + CSS + JS with just a few markup addition from the Svelte syntax that just make sense.
 
-I started writing all my new websites in Svelte, and slowly converts my old ones too. The developer experience is super nice and our bundle isn't compromised by its size nor performance either. I could easily write a single component and reuse it everywhere in my projects, so much so that I made my own [Elements](https://github.com/ignatiusmb/elements) package filled with all of my handmade elements. Now, I can quickly initiate a new project in seconds and have an app in a matter of hours.
-
 A couple of months later, I stumbled upon this talk by Rich Harris. This might be the turning point in my web dev career, as I watch his talk, I was both surprised and amazed by his talk. It was eye-opening, I felt like my eyes were blindfolded this whole time because of everyone around me only talking about React and nothing else. I really can't explain it to you better in any words, you really need to watch and listen to it by yourself.
 
-![!YouTube](AdNJ3fydeao "Rich Harris - Rethinking reactivity")
+![!YouTube#hb](AdNJ3fydeao "Rich Harris - Rethinking reactivity")
 
-This was released in the same time as the announcement of Svelte 3 stable release. After hearing his talk, I wanted more, I needed to know more from Rich, and immediately after it YouTube suggested his other talk a couple months later, it explained another side of Svelte where it tries to bring back the golden age of web development, back when everyone relied on jQuery to unite and normalize both the developer experience and the website itself.
+This was released in the same time as the announcement of Svelte 3 stable release After hearing his talk, I wanted more, I needed to know more from Rich, and immediately after it YouTube suggested his other talk a couple months later, it explained another side of Svelte where it tries to bring back the golden age of web development, back when everyone relied on jQuery to unite and normalize both the developer experience and the website itself.
 
-![!YouTube](BzX4aTRPzno "The Return of 'Write Less, Do More' by Rich Harris | JSCAMP 2019")
+> Frameworks are not tools for organizing your code, they are tools for organizing your mind
+
+This was one of the quote Rich showed us in his talk and it's important for all of us to know this. There will absolutely be no one that will force you to use a certain framework or dialect to build your apps with (except your employer/company), but for personal projects it's really up to you. Myself including, again, this is just an article of why **I** chose to use Svelte, and why you **should consider** using it.
+
+> You can use any framework or libraries you prefer, but good ones will guide you to organize your mind better and build your basics correctly so you can use any tools later on with no problem.
+
+![!YouTube#hb](BzX4aTRPzno "The Return of 'Write Less, Do More' by Rich Harris | JSCAMP 2019")
 
 ## All the good things
 
@@ -99,7 +131,7 @@ We'll have a file called `stores.js` that will export our writable/readable stor
 ```svelte
 <script>
   import { counter } from './store.js';
-  const increment = () => ($store += 1);
+  const increment = () => ($counter += 1);
 </script>
 
 <span>Counter is at {$counter}</span>
@@ -114,6 +146,14 @@ You know the struggle and pain of having to carry a huge baggage when you're tra
 
 Now, imagine that but with Svelte app as your essentials in your hand-carry. It compiles and prepares everything for you, packed in an extremely small and lightweight bundle for you to carry and go to your destination quickly.
 
+### Amazing performance and rapid-application development
+
+I started writing all my new websites in Svelte, and slowly converts my old ones too. The developer experience is super nice and our bundle isn't compromised by its size nor performance either. This is taken from my personal experience, so it may vary between others, but I've been able to (actually) finish more projects and I'm able to do it quicker than previously.
+
+I could also easily write a single component and reuse it everywhere in my projects, so much so that I made my own [Elements](https://github.com/ignatiusmb/elements) package filled with all of my handmade elements. Now, I can quickly initiate a new project in seconds and have an app in a matter of hours.
+
+Both points above was really the biggest selling point for me to choose Svelte over others. If you skipped to this part, you might want to read about the philosophy behind Svelte to get the context of what I'm referring to here.
+
 ### Et cetera
 
 There are some other things such as nice developer experience, good documentation, a11y linting, and other fun and useful stuffs. But, I do think that all of this is a crucial part of every framework, especially good documentation. It's a must and I might not move if it turns out that the documentation is sparse or it doesn't have a nice developer experience. But sure, Svelte has all of this.
@@ -126,7 +166,7 @@ It seems too good to be true, doesn't it? Because it actually is! Well, at least
 
 Its advantage is probably is a drawback to some of you. Svelte is to its core a compiler, and you can't just write some HTML, import the library and expect it to run in the browser. You can prototype in the [REPL](https://svelte.dev/repl/), but you'll always need a build step if you're developing locally.
 
-Also, even though I said that if you know HTML, CSS, and JS you can start writing Svelte apps, [Svelte itself is actually a language](https://gist.github.com/Rich-Harris/0f910048478c2a6505d1c32185b61934), a superset just like TypeScript is to JavaScript.
+As previously mentioned, even though I said that if you know HTML, CSS, and JS you can start writing Svelte apps, [Svelte itself is actually a language](https://gist.github.com/Rich-Harris/0f910048478c2a6505d1c32185b61934), a superset just like TypeScript is to JavaScript. So there will be some new things introduced that you need to learn like `$:` for reactive statements, and maybe some other caveats like you usually encounter when learning a new language.
 
 ### No official way to pass styling
 
@@ -154,7 +194,7 @@ Some other ways is to pass a class name or an inline style to the component itse
 
 ### Real DOM vs. Virtual DOM
 
-So, is real DOM actually better than virtual DOM (vDOM)? Yes.
+Is real DOM actually better than virtual DOM (vDOM)? **Yes**.
 
 Let's take a look at the question "[Does it scale?](https://github.com/sveltejs/svelte/issues/2546)". Here's another summary from the original comment
 
