@@ -87,7 +87,7 @@ A proper Front-end framework should come with a built-in styling solution, and S
 - Built-in and easy to use state management with `svelte/store`
 - and probably a lot more that's useful or important to some of you
 
-### Easy mutability
+### Truly reactive, easy mutability, no complex state management
 
 Something I've always despise and hated using in React is its `useState`, but you can throw all of that in Svelte, write plain JavaScript and everything will work for you. You don't need to know or think about a certain variable's state. If you need it to be mutable use `let`, else assign it as a `const`. It's plain and simple, everything you know about vanilla JS will work.
 
@@ -116,7 +116,7 @@ Need to make a form, capture and prevent it's default submit event, while also b
 </form>
 ```
 
-### Stores - built-in state management
+### Stores - built-in state management for sibling or nested components
 
 Need a variable to be accessible across the whole app or between components? Super easy.
 
@@ -146,6 +146,33 @@ You know the struggle and pain of having to carry a huge baggage when you're tra
 
 Now, imagine that but with Svelte app as your essentials in your hand-carry. It compiles and prepares everything for you, packed in an extremely small and lightweight bundle for you to carry and go to your destination quickly.
 
+### No virtual DOM
+
+Is real DOM actually better than virtual DOM (vDOM)? **Yes**.
+
+**TL;DR**: Your application starts faster because it builds itself beforehand in the compile step rather than building it in the client-side. Read on to learn more about the supporting theories and researches.
+
+Let's take a look at the question "[Does it scale?](https://github.com/sveltejs/svelte/issues/2546)". Here's another summary from the original comment
+
+- Theoretically, yes there is an inflection point. But, you're unlikely to hit that inflection point on any given page of your app
+- The incremental cost of Svelte components isn't that high
+- The initial bundle size is the one that really matters
+- Compiler-centric means we can vary the target output
+- Bundle size is only one facet of the Svelte experience
+
+Immediately, for the first point is taken down, [halfnelson](https://github.com/halfnelson) (creator of [Svelte Native](https://svelte-native.technology/)) has [made his research](https://github.com/halfnelson/svelte-it-will-scale) and his [conclusion in this comment](https://github.com/sveltejs/svelte/issues/2546#issuecomment-678845774) describes it best
+
+> You would need to bundle 3x the amount of components currently in the svelte website (no code splitting) to meet the size of similar amount of React component source + Libs
+
+Another one from the Discord channel, which is also compiled and written well in his repository at <https://github.com/halfnelson/svelte-it-will-scale>
+
+- [[1](https://discordapp.com/channels/457912077277855764/479653552869081089/747062733970866248)] "The crossover point that Rich mentioned looks to be about 120Kb of component source",
+- [[2](https://discordapp.com/channels/457912077277855764/479653552869081089/747062979807281232)] "for context, to get my 70 components for regression, I had to combine 3 different svelte projects (svelte website, svelte realworld, and svelte hn)",
+- [[3](https://discordapp.com/channels/457912077277855764/479653552869081089/747063019443453982)] "and they only got me to 74KB combined",
+- [[4](https://discordapp.com/channels/457912077277855764/479653552869081089/747063418078494720)] "react got me over the 120KB mark by combining the components from react-realworld, react-native-website, and builderbook"
+
+Another take on real DOM vs vDOM: <https://blog.bitsrc.io/react-vs-sveltejs-the-war-between-virtual-and-real-dom-59cbebbab9e9>
+
 ### Amazing performance and rapid-application development
 
 I started writing all my new websites in Svelte, and slowly converts my old ones too. The developer experience is super nice and our bundle isn't compromised by its size nor performance either. This is taken from my personal experience, so it may vary between others, but I've been able to (actually) finish more projects and I'm able to do it quicker than previously.
@@ -158,7 +185,7 @@ Both points above was really the biggest selling point for me to choose Svelte o
 
 There are some other things such as nice developer experience, good documentation, a11y linting, and other fun and useful stuffs. But, I do think that all of this is a crucial part of every framework, especially good documentation. It's a must and I might not move if it turns out that the documentation is sparse or it doesn't have a nice developer experience. But sure, Svelte has all of this.
 
-## Comparison and drawbacks
+## Potential drawbacks
 
 It seems too good to be true, doesn't it? Because it actually is! Well, at least for me, but it still has a lot of room for improvements and some of them you can even take part in!
 
@@ -191,31 +218,6 @@ There are multiple escape hatches available for us to use, one of the easiest an
 ```
 
 Some other ways is to pass a class name or an inline style to the component itself, but that means we can only use it on a single element inside the component.
-
-### Real DOM vs. Virtual DOM
-
-Is real DOM actually better than virtual DOM (vDOM)? **Yes**.
-
-Let's take a look at the question "[Does it scale?](https://github.com/sveltejs/svelte/issues/2546)". Here's another summary from the original comment
-
-- Theoretically, yes there is an inflection point. But, you're unlikely to hit that inflection point on any given page of your app
-- The incremental cost of Svelte components isn't that high
-- The initial bundle size is the one that really matters
-- Compiler-centric means we can vary the target output
-- Bundle size is only one facet of the Svelte experience
-
-Immediately, for the first point is taken down, [halfnelson](https://github.com/halfnelson) (creator of [Svelte Native](https://svelte-native.technology/)) has [made his research](https://github.com/halfnelson/svelte-it-will-scale) and his [conclusion in this comment](https://github.com/sveltejs/svelte/issues/2546#issuecomment-678845774) describes it best
-
-> You would need to bundle 3x the amount of components currently in the svelte website (no code splitting) to meet the size of similar amount of React component source + Libs
-
-Another one from the Discord channel, which is also compiled and written well in his repository at <https://github.com/halfnelson/svelte-it-will-scale>
-
-- [[1](https://discordapp.com/channels/457912077277855764/479653552869081089/747062733970866248)] "The crossover point that Rich mentioned looks to be about 120Kb of component source",
-- [[2](https://discordapp.com/channels/457912077277855764/479653552869081089/747062979807281232)] "for context, to get my 70 components for regression, I had to combine 3 different svelte projects (svelte website, svelte realworld, and svelte hn)",
-- [[3](https://discordapp.com/channels/457912077277855764/479653552869081089/747063019443453982)] "and they only got me to 74KB combined",
-- [[4](https://discordapp.com/channels/457912077277855764/479653552869081089/747063418078494720)] "react got me over the 120KB mark by combining the components from react-realworld, react-native-website, and builderbook"
-
-Another take on real DOM vs vDOM: <https://blog.bitsrc.io/react-vs-sveltejs-the-war-between-virtual-and-real-dom-59cbebbab9e9>
 
 ***
 Other reason(s):
