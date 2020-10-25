@@ -36,7 +36,7 @@
 	canonical="reviews/{post.slug}"
 	title={title.short ? title.short : title.jp ? title.jp : title.en} />
 
-<Article header {post} path="content/reviews/{post.slug}.md" {siblings}>
+<Article {post} header counter path="content/reviews/{post.slug}.md" {siblings}>
 	<div slot="header">
 		<ReviewBanner {post} />
 
@@ -55,18 +55,14 @@
 
 	<Disclaimer link />
 
-	<section>
-		{@html post.content}
-	</section>
+	{@html post.content}
 
 	{#if spoilers}
 		<Spoilers {spoilers} />
 	{/if}
 
 	{#if post.closing}
-		<section>
-			{@html post.closing}
-		</section>
+		{@html post.closing}
 	{/if}
 </Article>
 
