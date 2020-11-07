@@ -1,17 +1,29 @@
 <script context="module">
-	export async function preload() {
-		const data = await this.fetch('posts.json').then((r) => r.json());
-		const tags = data.flatMap((p) => p.tags);
-		const unique = {
-			categories: data.reduce((a, c) => (a.includes(c.tags[0]) ? a : [...a, c.tags[0]]), []).sort(),
-			tags: tags.reduce((a, c) => (a.includes(c) ? a : c ? [...a, c] : a), []).sort(),
-		};
-		return { data, unique };
+	const pages = ['about', 'curated', 'help', 'posts', 'reviews', 'uses'];
+	export async function preload({ params, query }) {
+		console.log(params, pages.includes(params.page));
+		if (!pages.includes(params.page)) return this.error(404, 'Page not found');
+		const res = await this.fetch(`${params.page}.json`);
+		if (res.status !== 200) return this.error(404, 'Data not found');
+		const data = await res.json();
+
+		const unique = {};
+		if (params.page === 'posts') {
+			unique.categories = Array.from(new Set(data.map((p) => p.tags[0]))).sort();
+			unique.tags = Array.from(new Set(data.flatMap((p) => p.tags))).sort();
+		} else if (params.page === 'reviews') {
+			unique.categories = Array.from(new Set(data.map((p) => p.category)));
+			unique.genres = Array.from(new Set(data.flatMap((p) => p.genres))).sort();
+			unique.verdict = Array.from(new Set(data.map((d) => d.verdict)));
+		}
+
+		return { data, unique, params: query };
 	}
 </script>
 
 <script>
-	export let data, unique;
+	export let data, unique, params;
+	let { query } = params;
 	import { flip } from 'svelte/animate';
 	import { scale } from 'svelte/transition';
 	const bound = 6;
@@ -24,7 +36,7 @@
 
 	import { pSlice as store } from '../../stores';
 	import { sieve, filter } from '../../utils/search';
-	let query, filtered, sieved;
+	let filtered, sieved;
 	let filters = { categories: [], tags: [], sort: 'updated' };
 
 	$: filtered = filter(filters, data);
