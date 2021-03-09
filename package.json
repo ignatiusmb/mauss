@@ -2,6 +2,7 @@
   "name": "mauss.dev",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
@@ -11,10 +12,11 @@
     "static:404:mv": "mv __sapper__/export/404/index.html __sapper__/export/404.html",
     "static:404:rm": "rmdir \"__sapper__/export/404\"",
     "lint": "run-p lint:**",
+    "lint:content": "node content/lint.test.js",
     "lint:eslint": "eslint src --ext js,ts",
+    "lint:markdown": "markdownlint content/**/*.md",
     "lint:svelte": "svelte-check src --output human --ignore src/node_modules",
     "lint:typescript": "tsc --strict --noEmit --skipLibCheck",
-    "lint:markdown": "markdownlint content/**/*.md",
     "check": "prettier -c src",
     "format": "prettier -w src"
   },
